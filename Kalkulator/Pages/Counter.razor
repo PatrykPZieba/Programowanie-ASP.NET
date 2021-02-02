@@ -1,0 +1,20 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+
+<input type="text" @bind="a" />
+<input type="text" @bind="b"/>
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<p>wynik: </p>@currentCount
+@code {
+    private float currentCount = 0;
+    private string a = "";
+    private string b ="";
+
+    private void IncrementCount()
+    {
+        currentCount= float.Parse(a)+float.Parse(b);
+        
+    }
+}

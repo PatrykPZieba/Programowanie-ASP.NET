@@ -1,0 +1,38 @@
+﻿@using Projekt_ASP.NET.Models
+@model IEnumerable<Product>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Category</td>
+            <td>@item.Description</td>
+            <td>
+                <a asp-controller="Admin" asp-action="Edit" asp-route-productID="@item.ID">
+                    <button type="button" class="btn btn-primary">Edit</button>
+                </a>
+            </td>
+            <td>
+                <form asp-controller="Admin" asp-action="Delete" asp-route-productID="@item.ID">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+<a asp-controller="Admin" asp-action="Create"><button type="button" class="btn btn-success">Add new</button></a>
